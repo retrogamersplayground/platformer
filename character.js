@@ -50,13 +50,14 @@ export class Character {
             this.x = 0;
             this.x_velocity = 0;
         }
-        //block collision
-        if(this.y_position - this.height < block3.y && this.x_position >= block3.x && this.x_position < block3.x + block3.width /* && this.x === levelOne.forEach(block => block.x || (this.x > block.x && this.x <= block.x + block.width))*/) {
+        //block3 collision top
+        if(this.y_position - this.height < block3.y && this.x_position >= block3.x && this.x_position < block3.x + block3.width) {
             console.log('collision');
             this.y_velocity = 0;
             this.y = block3.y - this.height -1;
             controller.resetJump();
         }
+        //block3 collision bottom
         // if(this.y_position < block3.y + block3.height + 1 && this.y_position < block3.y - 5 && this.x_position >= block3.x && this.x_position < block3.x + block3.width) {
         //     this.y = block3.y + block3.height;
         //     this.y_velocity = + 10;
