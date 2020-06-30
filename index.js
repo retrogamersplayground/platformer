@@ -3,9 +3,11 @@ export let ctx = canvas.getContext('2d');
 import { Character } from './character.js';
 import { levelOne } from './levelOne.js';
 import { Controller } from './controller.js';
+import { Goal } from './goal.js';
 
 export let character = new Character();
 export let controller = new Controller(character);
+export let goal = new Goal();
 
 window.addEventListener('keydown', controller.keyListener);
 window.addEventListener('keyup', controller.keyListener);
