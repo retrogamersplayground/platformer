@@ -95,7 +95,7 @@ export class Character {
         }
 
         //goal block10
-        if(this.y_positiion - this.height < block10.y && this.x_position >= block10.x && this.x_position < block10.x + block10.width) {
+        if(this.y_position + this.height > block10.y + block10.height && this.x_position >= block10.x && this.x_position < block10.x + block10.width || (this.y_position - this.height > block10.y && this.x_position - this.width >= block10.x)) {
             this.velcoity = 0;
             goal.goalCompleted();
         }
