@@ -4,10 +4,12 @@ import { Character } from './character.js';
 import { levelOne } from './levelOne.js';
 import { Controller } from './controller.js';
 import { Goal } from './goal.js';
+import { GameOver } from './gameOver.js';
 
 export let character = new Character();
 export let controller = new Controller(character);
 export let goal = new Goal();
+export let gameOver = new GameOver();
 
 window.addEventListener('keydown', controller.keyListener);
 window.addEventListener('keyup', controller.keyListener);

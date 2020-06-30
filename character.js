@@ -7,8 +7,9 @@ import { block3 } from './levelOne.js';
 import { block4 } from './levelOne.js';
 import { block5 } from './levelOne.js';
 import { block9 } from './levelOne.js';
-import {block10} from './levelOne.js';
+import { block10 } from './levelOne.js';
 import { goal } from './index.js';
+import { gameOver } from './index.js'
 
 export class Character {
     constructor() {
@@ -106,8 +107,13 @@ export class Character {
          
         //goal block10 collision
         if(this.y_position + this.height > block10.y + block10.height && this.x_position >= block10.x && this.x_position < block10.x + block10.width || (this.y_position - this.height > block10.y && this.x_position - this.width >= block10.x)) {
-            this.velcoity = 0;
+            this.velocity = 0;
             goal.goalCompleted();
+        }
+
+        //Game Over
+        if (this.y === canvas.height) {
+            gameOver.gameOver();
         }
     }
 }

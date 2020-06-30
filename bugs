@@ -1,0 +1,9 @@
+1. broke goal collision 06/30/2020 before game over update.
+
+2. block9 wall collision not implemented for block9.x + block9.width, you can go through the back side of the wall.
+
+3. need bottom of block collision
+
+4. top of block collision for block 3, 4, and five is not working correctly
+
+5. when 'gameOver' character can still move right and left and potentially reach the goal.
