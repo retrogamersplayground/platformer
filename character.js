@@ -1,7 +1,8 @@
 import { canvas } from './index.js';
 import { ctx } from './index.js';
 import { controller } from './index.js';
-import { levelOne } from './levelOne.js';
+import { levelOne, block2 } from './levelOne.js';
+import { block1 } from './levelOne.js';
 import { block3 } from './levelOne.js';
 import { block4 } from './levelOne.js';
 import { block5 } from './levelOne.js';
@@ -35,7 +36,7 @@ export class Character {
         this.x_velocity += 0.5;
     }
     jump() {
-        this.y_velocity -= 90;
+        this.y_velocity -= 100;
     }
     physics() {
         this.y_velocity += 1.5; //gravity
@@ -46,9 +47,17 @@ export class Character {
         this.y_velocity *= 0.9;//friction
         this.y_position = Math.floor(this.y);
         this.x_position = Math.floor(this.x);
-        //prevent falling below screen till block collision is done
-       if (this.y > canvas.height - 20 - 15) {
-            this.y = canvas.height - 20 - 15;
+        
+        //block 1 collision
+       if (this.y_position + this.height >= /*canvas.height - 20 - 15*/ block1.y && this.x_position < block1.x + block1.width) {
+            this.y = block1.y - this.height - 1;
+            controller.resetJump();
+            this.y_velocity = 0;
+        }
+
+        //block2 collision
+        if (this.y_position + this.height >= /*canvas.height - 20 - 15*/ block2.y && this.x_position + this.width >= block2.x) {
+            this.y = block2.y - this.height - 1;
             controller.resetJump();
             this.y_velocity = 0;
         }
@@ -73,12 +82,6 @@ export class Character {
             controller.resetJump();
         }
 
-        //block3 collision bottom
-        // if(this.y_position < block3.y + block3.height + 1 && this.y_position < block3.y - 5 && this.x_position >= block3.x && this.x_position < block3.x + block3.width) {
-        //     this.y = block3.y + block3.height;
-        //     this.y_velocity = + 10;
-        // }
-        
         //block4 collision top
         if(this.y_position - this.height < block4.y && this.x_position >= block4.x && this.x_position < block4.x + block4.width) {
             console.log('collision');
